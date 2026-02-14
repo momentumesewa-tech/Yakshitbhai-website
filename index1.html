@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grok Powered by xAI - Ultimate Showcase Website</title>
+    <style>
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        #hero button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background-color: #ff6b6b;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        #hero button:hover {
+            transform: scale(1.1);
+            background-color: #ff4757;
+        }
+
+        /* Particle Animation in Hero */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: float 10s infinite linear;
+            opacity: 0.5;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100vh); }
+        }
+
+        /* About Section */
+        #about {
+            padding: 5rem 2rem;
+            background-color: white;
+            text-align: center;
+        }
+
+        #about h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #2a5298;
+        }
+
+        #about p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+        }
+
+        /* Features Section */
+        #features {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            color: white;
+        }
+
+        #features h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+        }
+
+        /* Interactive Gallery Section */
+        #gallery {
+            padding: 5rem 2rem;
+            background-color: #e0e0e0;
+            text-align: center;
+        }
+
+        #gallery h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            width: 300px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 5rem 2rem;
+            background-color: #2a5298;
+            color: white;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #contact input, #contact textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #contact button {
+            padding: 1rem 2rem;
+            background-color: #ff6b6b;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        #contact button:hover {
+            background-color: #ff4757;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            background-color: #1e3c72;
+            color: white;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 60, 114, 0.8);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+
+        nav.scrolled {
+            background: rgba(30, 60, 114, 1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff6b6b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 3rem; }
+            #hero p { font-size: 1.2rem; }
+            #about h2, #features h2, #gallery h2, #contact h2 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="hero">
+        <div class="particles" id="particles"></div>
+        <h1>Welcome to Grok Powered by xAI</h1>
+        <p>Showcasing the full power of AI in a single, massive, interactive website. Built with HTML, CSS, and JS in one file!</p>
+        <button onclick="scrollToSection('about')">Explore More</button>
+    </section>
+
+    <section id="about">
+        <h2>About Grok and xAI</h2>
+        <p>Grok is an AI built by xAI, designed to be maximally truthful and helpful. Inspired by the Hitchhiker's Guide to the Galaxy and JARVIS from Iron Man.</p>
+        <p>This website demonstrates my capabilities: stunning visuals, smooth interactions, and dynamic content – all in one file to prove my prowess.</p>
+        <p>From particle animations to interactive galleries, experience the fusion of technology and creativity.</p>
+    </section>
+
+    <section id="features">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Stunning Animations</h3>
+                <p>Powered by CSS keyframes for smooth, performant effects like fading and floating particles.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Interactive Elements</h3>
+                <p>JavaScript handles scrolling, form submissions, and dynamic content generation.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Responsive Design</h3>
+                <p>Adapts seamlessly to mobile, tablet, and desktop using media queries.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Single File Magic</h3>
+                <p>Everything – HTML, CSS, JS – packed into one file for ultimate portability and showcase.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Particle System</h3>
+                <p>A JavaScript-generated particle background for an immersive hero section.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Gallery with Hover Effects</h3>
+                <p>Dynamic image gallery with CSS transitions for engaging visuals.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Interactive Gallery</h2>
+        <div class="gallery-container" id="gallery-container">
+            <!-- Gallery items will be added dynamically via JS -->
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get in Touch</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Grok by xAI. All rights reserved. Demonstrating full power!</p>
+    </footer>
+
+    <script>
+        // Smooth Scrolling Function
+        function scrollToSection(sectionId) {
+            document.querySelector(`#${sectionId}`).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Navigation Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Particle Animation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.width = `${Math.random() * 5 + 2}px`;
+                particle.style.height = particle.style.width;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Dynamic Gallery
+        const galleryImages = [
+            'https://via.placeholder.com/300x200?text=AI+Art+1',
+            'https://via.placeholder.com/300x200?text=xAI+Innovation',
+            'https://via.placeholder.com/300x200?text=Grok+Power',
+            'https://via.placeholder.com/300x200?text=Future+Tech',
+            'https://via.placeholder.com/300x200?text=Space+Exploration',
+            'https://via.placeholder.com/300x200?text=Neural+Networks',
+            'https://via.placeholder.com/300x200?text=Quantum+Computing',
+            'https://via.placeholder.com/300x200?text=Robotics'
+        ];
+
+        function loadGallery() {
+            const container = document.getElementById('gallery-container');
+            galleryImages.forEach(src => {
+                const item = document.createElement('div');
+                item.classList.add('gallery-item');
+                item.style.backgroundImage = `url(${src})`;
+                item.addEventListener('click', () => alert('Clicked on: ' + src));
+                container.appendChild(item);
+            });
+        }
+        loadGallery();
+
+        // Contact Form Submission (Simulated)
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Message sent successfully! (Simulated)');
+            e.target.reset();
+        });
+
+        // Add more interactivity: Random color changer on hero button hover
+        const heroButton = document.querySelector('#hero button');
+        heroButton.addEventListener('mouseover', () => {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7af', '#ff9f1c'];
+            heroButton.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        });
+    </script>
+</body>
+</html>
